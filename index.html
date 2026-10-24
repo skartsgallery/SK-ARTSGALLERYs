@@ -143,44 +143,6 @@ button, a { cursor: pointer; text-decoration: none; }
 </div>
 <div id="site-bg-overlay" class="site-bg-overlay"></div>
 
-<!-- Top Student-Built Header Strip -->
-<div class="bg-slate-300/95 border-b border-slate-400/80 text-slate-900 text-xs sm:text-sm py-2.5 px-4 relative z-30">
-<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-<div class="flex items-center gap-2">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-800 text-white">
-Student Creator Initiative
-</span>
-<span class="font-medium text-slate-800">
-By <strong>Sarver Khan</strong> — Student of <strong>BDS (Bachelor of Dental Surgery)</strong> at <strong>Tantia University, Sri Ganganagar</strong>
-</span>
-</div>
-<div class="flex flex-wrap items-center gap-2 text-xs">
-<a
-href="https://wa.me/916376280756?text=Hello%20Sarver%20Khan%20(SK%20ARTS%20GALLERY)%2C%20I%20want%20to%20inquire%20about%20a%20Custom%20Handmade%20Thread%20String%20Art%20Portrait."
-target="_blank"
-rel="noopener noreferrer"
-class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-[11px] shadow-sm transition"
->
-<span>WhatsApp: 6376280756</span>
-</a>
-<div class="inline-flex rounded-lg bg-slate-200 p-0.5 border border-slate-400 shadow-sm">
-<button type="button" onclick="setCampusBackground(0)" id="bg-btn-0" class="px-2 py-1 rounded-md text-[11px] font-semibold bg-slate-800 text-white transition">
-Main Gate
-</button>
-<button type="button" onclick="setCampusBackground(1)" id="bg-btn-1" class="px-2 py-1 rounded-md text-[11px] font-semibold text-slate-700 hover:text-slate-950 transition">
-College Block
-</button>
-<button type="button" onclick="setCampusBackground(2)" id="bg-btn-2" class="px-2 py-1 rounded-md text-[11px] font-semibold text-slate-700 hover:text-slate-950 transition">
-Campus Lawns
-</button>
-<button type="button" onclick="toggleClearCampusView()" id="bg-peek-btn" class="px-2 py-1 rounded-md text-[11px] font-semibold text-amber-800 hover:text-amber-950 transition" title="Toggle clear campus background view">
-View Campus BG
-</button>
-</div>
-</div>
-</div>
-</div>
-
 <!-- Sticky Navigation Header (Soft Slate-Grey Theme) -->
 <header class="sticky top-0 z-40 glass-panel border-b border-slate-400/80">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
@@ -211,45 +173,37 @@ Handmade Thread String Art • By BDS Student Sarver Khan
 <span class="w-2 h-2 rounded-full bg-amber-600"></span>
 2. Order Art (₹4,999)
 </a>
-<a href="#order-status-section" class="hover:text-slate-950 transition flex items-center gap-1.5">
+<button type="button" onclick="openCustomerPortalModal('profile')" class="hover:text-slate-950 transition flex items-center gap-1.5 cursor-pointer">
 <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-3. Customer Login &amp; Status
-</a>
+3. Profile &amp; Order Status
+</button>
 <a href="#about-artist-section" class="hover:text-slate-950 transition flex items-center gap-1.5">
 <span class="w-2 h-2 rounded-full bg-slate-600"></span>
 4. About Artist
 </a>
 </nav>
 
-<!-- Action Buttons: Track Order, Artist Admin & Cart / Order Trigger -->
+<!-- Action Buttons: Track Order Status (beside Login/Profile), Customer Login / User Profile & Order Trigger -->
 <div class="flex items-center gap-2">
 <button
 type="button"
-onclick="openOrderHistoryModal()"
+onclick="openCustomerPortalModal('track')"
 id="orders-nav-btn"
-class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 border border-slate-400 text-xs font-bold text-slate-800 shadow-sm transition"
+title="Track Live Order Status & Manage Orders"
+class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 border border-slate-400 text-xs font-bold text-slate-800 shadow-sm transition cursor-pointer"
 >
 <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 </svg>
-<span class="hidden sm:inline">Order Status</span>
+<span class="hidden sm:inline">Track Order Status</span>
 <span id="orders-count-badge" class="px-1.5 py-0.2 rounded-full bg-slate-800 text-white text-[11px] font-bold">1</span>
 </button>
 <button
 type="button"
-onclick="scrollToCustomerPortal('register')"
-id="customer-register-nav-btn"
-class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 border border-amber-400 text-xs font-extrabold text-amber-950 shadow-sm transition"
-title="New Customer Registration (Name, Mobile & Unique Password)"
->
-<span>1. Register</span>
-</button>
-<button
-type="button"
-onclick="scrollToCustomerPortal('login')"
+onclick="openCustomerPortalModal('profile')"
 id="customer-login-nav-btn"
-class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 border border-emerald-500 text-xs font-extrabold text-emerald-950 shadow-sm transition"
-title="Direct Customer Login with Mobile Number & Unique Password"
+class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 border border-emerald-500 text-xs font-extrabold text-emerald-950 shadow-sm transition cursor-pointer"
+title="Customer Login / My Profile & Orders"
 >
 <span id="customer-login-nav-label">🔑 Customer Login</span>
 </button>
@@ -276,80 +230,18 @@ class="relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-9
 <!-- ===================================================================== -->
 <!-- SECTION 1 (UPPER SIDE OF THE PAGE): STARTING SHOWCASE & TRIBUTE PRESENTATION -->
 <!-- ===================================================================== -->
-<section id="top-showcase" class="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-400/70">
+<section id="top-showcase" class="relative py-6 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-400/70">
 <div class="max-w-7xl mx-auto">
-<!-- Student Portfolio Pill -->
-<div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-<div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl glass-panel border border-slate-400">
-<span class="flex h-2.5 w-2.5 rounded-full bg-emerald-600"></span>
-<span class="text-xs sm:text-sm font-semibold text-slate-800">
-Student Art Showcase &amp; Custom Order Studio • Made by a Student, For Art Lovers
-</span>
-</div>
-<div class="flex flex-wrap items-center gap-3">
-<a
-href="https://wa.me/916376280756?text=Hello%20Sarver%20Khan%20(SK%20ARTS%20GALLERY)%2C%20I%20would%20like%20to%20order%20a%20Custom%20Handmade%20Thread%20String%20Art%20Portrait."
-target="_blank"
-rel="noopener noreferrer"
-class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-950 bg-emerald-100/90 border border-emerald-400 px-3 py-1.5 rounded-xl transition"
->
-<span>WhatsApp Contact: +
-     +91 6376280756</span>
-</a>
-<a href="#products-section" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 hover:text-amber-800 transition">
-<span>Upload Photo &amp; Order (₹4,999) ↓</span>
-</a>
-</div>
-</div>
-
 <!-- Hero Grid: Left Narrative + Right Featured Tribute Presentation Photo -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 <!-- Left Column: Headlines & Student Artist Introduction -->
 <div class="lg:col-span-6 space-y-6">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-300 border border-slate-400 text-slate-900 text-xs font-bold uppercase tracking-widest">
-<span>Sarver Khan • BDS Student at Tantia University</span>
-</div>
 <h1 class="font-display text-3xl sm:text-5xl lg:text-[52px] font-bold leading-[1.12] tracking-tight text-slate-900">
 Welcome to <span class="accent-gradient-text">SK ARTS GALLERY</span>
 </h1>
 <p class="text-base sm:text-lg text-slate-800 leading-relaxed">
 Created by <strong class="text-slate-950">Sarver Khan</strong>, a student of <strong class="text-slate-900">BDS (Bachelor of Dental Surgery)</strong> at <strong>Dr. S.S. Tantia Dental College, Hospital &amp; Research Centre, Tantia University (Sri Ganganagar)</strong> — showcasing his unique talent of <strong>Handmade Thread String Art</strong>.
 </p>
-<div class="glass-panel rounded-2xl p-4 sm:p-5 border-l-4 border-l-slate-800 space-y-2">
-<div class="text-xs font-bold uppercase tracking-wider text-slate-900">
-Handcrafted Portrait Art from Your Photograph • Live Order Status Tracking
-</div>
-<p class="text-sm text-slate-700 leading-relaxed">
-Every portrait at <strong>SK ARTS GALLERY</strong> is carefully hand-woven by Sarver Khan using continuous high-tensile black thread stretched across precision pins. Because each artwork is 100% handmade, crafting takes <strong>7–10 days in making</strong> with an <strong>Estimated Delivery Time of 10 to 15 Days</strong>. Track your live crafting &amp; delivery status right on this site and share your payment invoice on WhatsApp at <strong>6376280756</strong>.
-</p>
-</div>
-<!-- Primary CTA Buttons -->
-<div class="flex flex-wrap items-center gap-3 pt-1">
-<button
-type="button"
-onclick="quickBuyFeaturedProduct()"
-class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base shadow-lg transition transform hover:-translate-y-0.5"
->
-<span>Order Custom String Art (₹4,999)</span>
-<svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-</svg>
-</button>
-<a
-href="#order-status-section"
-class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-900 border border-slate-400 font-bold text-sm sm:text-base shadow-sm transition"
->
-<span>Check Live Order Status</span>
-</a>
-<a
-href="https://wa.me/916376280756?text=Hello%20Sarver%20Khan%20(SK%20ARTS%20GALLERY)%2C%20I%20want%20to%20order%20a%20Handmade%20Thread%20String%20Art%20Portrait."
-target="_blank"
-rel="noopener noreferrer"
-class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold shadow-sm transition"
->
-<span>WhatsApp: 6376280756</span>
-</a>
-</div>
 <!-- Key Highlights Row -->
 <div class="grid grid-cols-3 gap-3 pt-2">
 <div class="glass-panel rounded-xl p-3 text-center">
@@ -388,12 +280,12 @@ src="data:image/webp;base64,UklGRnQwAABXRUJQVlA4IGgwAAAwAgGdASoIAhMBPqFInksmJCMn
 alt="BDS Student Sarver Khan presenting handmade Thread String Art portrait of Dr. S.S. Tantia at Tantia University"
 class="w-full h-[360px] sm:h-[430px] object-cover object-center"
 />
-<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-900/70 to-transparent p-4 sm:p-5">
-<p class="text-xs font-bold uppercase tracking-wider text-amber-300">
-Showpiece Slide 1 • University Showcase Presentation
+<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-900/80 to-transparent p-4 sm:p-5 space-y-1">
+<p class="text-xs sm:text-sm font-extrabold tracking-wide text-amber-300 leading-snug">
+A Tribute to Our Founder, Dr. S.S. Tantia: A Visionary, Leader, and Guiding Light
 </p>
-<p class="text-sm sm:text-base font-semibold text-white">
-Sarver Khan (BDS Student at Tantia University) Presenting His Handmade Thread String Art Portrait of Founder Dr. S.S. Tantia
+<p class="text-xs sm:text-sm font-medium text-white leading-relaxed">
+In profound honor of his inspiring legacy, this beautiful handmade thread string art portrait is proudly presented by Sarver Khan, a BDS Student at Tantia University.
 </p>
 </div>
 </div>
@@ -496,16 +388,13 @@ class="flex items-center gap-2.5 p-1.5 rounded-xl bg-slate-200/80 border border-
 <section id="products-section" class="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-400/70 string-art-pattern">
 <div class="max-w-7xl mx-auto">
 <!-- Section Header -->
-<div class="text-center max-w-3xl mx-auto mb-10">
+<div class="text-center max-w-3xl mx-auto mb-6">
 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-300 border border-slate-400 text-slate-900 text-xs font-bold uppercase tracking-widest mb-3">
 <span>Step 1: Upload Photo • Step 2: Address • Step 3: Razorpay Payment (₹4,999) • Step 4: Instant Confirmation</span>
 </div>
 <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900">
 Order Your Custom <span class="accent-gradient-text">Handmade Thread String Art</span>
 </h2>
-<p class="text-slate-700 text-sm sm:text-base mt-2">
-Slide through both sample artworks below, upload your photograph, complete your <strong class="text-slate-950">₹4,999</strong> payment via <strong>Razorpay</strong>, and send your payment invoice on WhatsApp to <strong class="text-emerald-800">+91 6376280756</strong>.
-</p>
 </div>
 
 <!-- SINGLE FEATURED PRODUCT WITH 2-IMAGE SLIDER & CUSTOMER PHOTO UPLOAD CARD -->
@@ -516,7 +405,7 @@ Slide through both sample artworks below, upload your photograph, complete your 
 <div class="rounded-2xl overflow-hidden bg-slate-200/90 p-3.5 border border-slate-400 shadow-inner">
 <div class="flex items-center justify-between mb-2.5">
 <span id="product-slide-badge" class="px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[11px] font-bold uppercase tracking-wider">
-Sample Artwork 1 of 2 • Real Silver Frame
+Sample Artwork • Slide 1
 </span>
 <span class="text-xs font-extrabold text-amber-800">Fixed Price: ₹4,999</span>
 </div>
@@ -574,7 +463,7 @@ class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-9
 
 <!-- Caption & Thumbnail Switcher for the 2 Product Images -->
 <p id="product-slide-caption" class="text-[11px] text-slate-800 text-center mt-2 font-semibold">
-Slide 1/2: Handmade Thread String Art in Brushed Metallic Silver Frame (Swipe or Click Arrows)
+Sample Artwork • Slide 1
 </p>
 <div class="grid grid-cols-2 gap-2.5 mt-2.5">
 <button
@@ -583,10 +472,10 @@ onclick="goToProductSlide(0)"
 id="slide-thumb-0"
 class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-100 border-2 border-slate-900 text-left transition shadow-sm"
 >
-<img id="thumb-img-prod1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Product Sample 1" class="w-10 h-10 object-cover rounded-lg border border-slate-400 flex-shrink-0" />
+<img id="thumb-img-prod1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sample Artwork Slide 1" class="w-10 h-10 object-cover rounded-lg border border-slate-400 flex-shrink-0" />
 <div class="min-w-0">
-<div class="text-[11px] font-extrabold text-slate-900 truncate">Image 1: Silver Frame</div>
-<div class="text-[10px] text-slate-600 truncate">Framed Portrait Sample</div>
+<div class="text-[11px] font-extrabold text-slate-900 truncate">Sample Artwork</div>
+<div class="text-[10px] text-slate-600 truncate">Slide 1</div>
 </div>
 </button>
 <button
@@ -595,70 +484,18 @@ onclick="goToProductSlide(1)"
 id="slide-thumb-1"
 class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-200/80 border border-slate-400 hover:border-slate-700 text-left transition"
 >
-<img id="thumb-img-prod2" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Product Sample 2" class="w-10 h-10 object-cover rounded-lg border border-slate-400 flex-shrink-0" />
+<img id="thumb-img-prod2" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sample Artwork Slide 2" class="w-10 h-10 object-cover rounded-lg border border-slate-400 flex-shrink-0" />
 <div class="min-w-0">
-<div class="text-[11px] font-bold text-slate-900 truncate">Image 2: Circular Art</div>
-<div class="text-[10px] text-slate-600 truncate">Made for Dr. Ma'am Sample</div>
+<div class="text-[11px] font-bold text-slate-900 truncate">Sample Artwork</div>
+<div class="text-[10px] text-slate-600 truncate">Slide 2</div>
 </div>
 </button>
-</div>
-</div>
-
-<!-- Live Customer Uploaded Photo & Auto-Generated Thread String Art Preview Box -->
-<div id="customer-upload-preview-card" class="rounded-2xl bg-slate-200/90 p-3.5 border-2 border-dashed border-slate-500 text-center space-y-2">
-<div class="flex flex-wrap items-center justify-between gap-1">
-<span class="text-xs font-extrabold uppercase tracking-wider text-slate-900">
-✨ Live Auto-Generated Thread String Art Preview
-</span>
-<span id="thread-art-gen-badge" class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-950 text-[10px] font-extrabold uppercase">
-AI Loom Simulator
-</span>
-</div>
-<div id="uploaded-photo-preview-wrapper" class="hidden space-y-2.5">
-<div class="grid grid-cols-2 gap-2.5 items-center bg-slate-100 p-2.5 rounded-xl border border-slate-400 shadow-sm">
-<div class="space-y-1">
-<div class="text-[10px] font-extrabold text-slate-700 uppercase">1. Your Uploaded Photo</div>
-<img id="customer-uploaded-img-main" onclick="openPhotoZoomModal(this.src, 'Customer Uploaded Photograph')" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Customer Uploaded Photo" class="w-full h-36 object-contain rounded-lg bg-slate-200 border border-slate-300 mx-auto cursor-pointer hover:opacity-90 transition" title="Click to enlarge" />
-<button type="button" onclick="openPhotoZoomModal(document.getElementById('customer-uploaded-img-main').src, 'Customer Uploaded Photograph')" class="text-[10px] font-bold text-slate-700 underline">🔍 Zoom Original</button>
-</div>
-<div class="space-y-1">
-<div class="text-[10px] font-extrabold text-emerald-800 uppercase">2. Auto-Generated Thread Art</div>
-<img id="sample-comparison-img-main" onclick="openPhotoZoomModal(this.src, 'Auto-Generated Thread String Art Preview')" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Auto-Generated Thread String Art Preview" class="w-full h-36 object-contain rounded-lg bg-slate-900 border-2 border-amber-500 mx-auto cursor-pointer hover:opacity-90 transition shadow" title="Click to enlarge Auto-Generated Thread Art" />
-<button type="button" onclick="openPhotoZoomModal(document.getElementById('sample-comparison-img-main').src, 'Auto-Generated Thread String Art Preview')" class="text-[10px] font-extrabold text-emerald-800 underline">✨ Zoom Thread Art</button>
-</div>
-</div>
-<p id="uploaded-file-name-main" class="text-xs font-extrabold text-emerald-900">✓ Photo uploaded &amp; converted to Thread String Art preview!</p>
-<div class="text-[11px] text-slate-700 bg-emerald-100/80 border border-emerald-400 rounded-lg px-2.5 py-1.5 font-medium">
-✓ Both your <strong>Uploaded Photo</strong> and <strong>Auto-Generated Thread Art</strong> are automatically sent to Artist Admin <strong>Sarver Khan</strong> with your order details!
-</div>
-</div>
-<div id="uploaded-photo-empty-state" class="py-4 text-xs text-slate-700 space-y-1">
-<div class="font-bold text-slate-900">Upload any photo on the right to see your instant Auto-Generated Thread String Art!</div>
-<div class="text-[11px] text-slate-600">Our circular loom simulator weaves virtual black thread chords across 200 perimeter pins so you can see how your portrait will look.</div>
 </div>
 </div>
 </div>
 
 <!-- Right Column: Single Artwork Details, Customer Photo Upload & Order Trigger -->
 <div class="lg:col-span-7 space-y-5">
-<div class="flex flex-wrap items-center gap-2">
-<span class="px-3 py-1 rounded-full bg-slate-300 text-slate-900 border border-slate-400 text-xs font-bold uppercase tracking-wider">
-Signature Metallic Silver Frame &amp; Circular Loom
-</span>
-<span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold">
-Handcrafted by Sarver Khan (BDS Student, Tantia University)
-</span>
-<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-400 text-xs font-extrabold">
-⏱ Making: 7–10 Days • Est. Delivery: 10–15 Days
-</span>
-</div>
-<h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
-Custom Handmade Thread String Art Portrait
-</h3>
-<p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-Have your photograph hand-woven into a lifelike <strong>Thread String Art Portrait</strong> using continuous black thread on a circular gallery loom with a brushed metallic silver presentation frame and custom name engraving — crafted in the exact style of the two sample artworks shown in the slider on the left.
-</p>
-
 <!-- Step-by-Step Customer Photo Upload & Custom Plaque Input -->
 <div class="rounded-2xl bg-slate-200/90 border border-slate-400 p-4 sm:p-5 space-y-4">
 <div>
@@ -711,7 +548,7 @@ class="w-full rounded-xl bg-slate-100 border border-slate-400 focus:border-slate
 <!-- Post-Payment WhatsApp Invoice Notice Box -->
 <div class="rounded-2xl bg-emerald-100/80 border border-emerald-400 p-3.5 flex flex-wrap items-center justify-between gap-3">
 <div class="text-xs text-emerald-950">
-<strong>Handmade Crafting &amp; Delivery Time:</strong> Each portrait is 100% handmade and takes <strong>7–10 Days in Making</strong>, with an <strong>Estimated Delivery Time of 10 to 15 Days</strong>. After payment, send your invoice &amp; photo on WhatsApp <strong>+91 6376280756</strong>.
+<strong>Handmade Crafting &amp; Delivery Time:</strong> Each portrait is 100% handmade and takes <strong>7–10 Days in Making</strong>, with an <strong>Estimated Delivery Time of 10 to 15 Days</strong>. After payment, you can send your invoice on WhatsApp at <strong>+91 6376280756</strong> (optional — not mandatory).
 </div>
 <a
 href="https://wa.me/916376280756?text=Hello%20Sarver%20Khan%20(SK%20ARTS%20GALLERY)%2C%20I%20have%20a%20question%20about%20ordering%20a%20Handmade%20Thread%20String%20Art%20Portrait."
@@ -750,7 +587,7 @@ type="button"
 onclick="addFlagshipToCart(true)"
 class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm shadow-lg transition"
 >
-<span>Order Now (Upload Photo &amp; Pay via Razorpay)</span>
+<span>Order Now</span>
 <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
 </svg>
@@ -766,48 +603,32 @@ class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:
 <!-- ===================================================================== -->
 <!-- SECTION 2B: CUSTOMER REGISTRATION FIRST -> STRICTLY PROTECTED CUSTOMER LOGIN & LIVE ORDER STATUS -->
 <!-- ===================================================================== -->
-<section id="order-status-section" class="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-400/70">
-<div class="max-w-7xl mx-auto space-y-8">
-<div class="flex flex-wrap items-end justify-between gap-4">
-<div>
-<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-300 border border-slate-400 text-slate-900 text-xs font-bold uppercase tracking-widest mb-2">
-<span>🔐 One-Time Registration Forever • Lifetime Active Customer Account (Mobile + Unique Password)</span>
+<section id="order-status-section" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 overflow-y-auto" onclick="if(event.target === this) closeCustomerPortalModal()">
+<div class="w-full max-w-5xl my-auto">
+<!-- POPUP MODAL: CUSTOMER LOGIN / REGISTRATION & USER PROFILE / ORDER TRACKING DASHBOARD -->
+<div class="glass-card rounded-3xl p-4 sm:p-7 border-2 border-slate-400 shadow-2xl space-y-5 max-h-[92vh] overflow-y-auto">
+<div class="flex items-center justify-between gap-3 border-b border-slate-300 pb-3.5">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center font-extrabold text-sm shadow">
+SK
 </div>
-<h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-900">
-Customer Registration, <span class="accent-gradient-text">Direct Login &amp; Order Status</span>
+<div>
+<h2 id="customer-portal-modal-title" class="font-display text-lg sm:text-2xl font-bold text-slate-900">
+Customer Login &amp; Registration
 </h2>
-<p class="text-slate-700 text-sm sm:text-base mt-1 max-w-3xl">
-<strong>One-Time Registration for Forever:</strong> Register once with your <strong>Full Name, 10-Digit Mobile Number, and a Unique Password</strong>. Your customer account stays <strong>permanently active forever</strong> — automatically keeping you signed in across visits and remembering your details for every future order.
+<p id="customer-portal-modal-subtitle" class="text-[11px] sm:text-xs text-slate-600">
+Register or login once to place your order, view your profile, and track live order status.
 </p>
 </div>
-<div class="flex flex-wrap items-center gap-2.5">
+</div>
 <button
 type="button"
-onclick="switchCustomerAuthTab('register')"
-class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-200 hover:bg-amber-300 border border-amber-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-sm transition"
+onclick="closeCustomerPortalModal()"
+class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 border border-slate-400 text-slate-900 text-xs font-extrabold shadow-sm transition cursor-pointer"
 >
-<span>1. New Customer Register</span>
+<span>✕ Close</span>
 </button>
-<button
-type="button"
-onclick="switchCustomerAuthTab('login')"
-class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-300 font-extrabold text-xs sm:text-sm shadow-md transition"
->
-<span>2. Direct Customer Login</span>
-</button>
-<a
-href="https://wa.me/916376280756?text=Hello%20Sarver%20Khan%20(SK%20ARTS%20GALLERY)%2C%20I%20am%20sharing%20my%20Payment%20Invoice%20for%20my%20String%20Art%20Order."
-target="_blank"
-rel="noopener noreferrer"
-class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-md transition"
->
-<span>Send Payment Invoice to WhatsApp 6376280756</span>
-</a>
 </div>
-</div>
-
-<!-- STRICTLY PROTECTED CUSTOMER REGISTRATION & LOGIN PORTAL CARD -->
-<div class="glass-card rounded-3xl p-5 sm:p-8 border-2 border-slate-400 space-y-6">
 <!-- Customer Auth Gate (Shown when Customer is NOT logged in) -->
 <div id="customer-login-gate" class="max-w-2xl mx-auto rounded-2xl bg-slate-100 p-6 sm:p-7 border-2 border-slate-400 shadow-md space-y-5 transition-all">
 <!-- Order Attempt Prompt Banner (Shown when Customer clicks Order without being logged in) -->
@@ -1010,8 +831,8 @@ Select any specific order below to track real-time crafting progress, download y
 <div class="flex flex-wrap items-center gap-2.5">
 <button
 type="button"
-onclick="quickBuyFeaturedProduct()"
-class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs sm:text-sm font-extrabold shadow-md transition"
+onclick="closeCustomerPortalModal(); quickBuyFeaturedProduct();"
+class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs sm:text-sm font-extrabold shadow-md transition cursor-pointer"
 >
 + Place New String Art Order (₹4,999)
 </button>
@@ -1077,18 +898,7 @@ class="w-full rounded-xl bg-white border border-slate-400 focus:border-slate-900
 <!-- ===================================================================== -->
 <section id="about-artist-section" class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
 <div class="max-w-7xl mx-auto">
-<!-- Section Header -->
-<div class="text-center max-w-3xl mx-auto mb-12">
-<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-300 border border-slate-400 text-slate-900 text-xs font-bold uppercase tracking-widest mb-3">
-<span>Student Creator &amp; String Artist</span>
-</div>
-<h2 class="font-display text-3xl sm:text-5xl font-bold text-slate-900">
-About the Artist — <span class="accent-gradient-text">Sarver Khan</span>
-</h2>
-<p class="text-slate-700 text-sm sm:text-base mt-3">
-Student of <strong>BDS (Bachelor of Dental Surgery)</strong> at <strong>Tantia University, Sri Ganganagar</strong> • Handmade Thread String Artist
-</p>
-</div>
+
 
 <!-- Artist Profile Card (Featuring 1st Uploaded Photo: artist-portrait.jpg) -->
 <div class="glass-card rounded-3xl p-6 sm:p-10 lg:p-12 border-2 border-slate-400 shadow-xl">
@@ -2687,35 +2497,85 @@ function submitCustomerCancelRequest(orderId) {
 // MANDATORY GATE: PROMPT CUSTOMER REGISTRATION & LOGIN PANEL WHEN
 // ATTEMPTING TO PLACE AN ORDER WITHOUT LOGGING IN FIRST
 // =====================================================================
+function openCustomerPortalModal(mode) {
+  renderLiveOrderTracker();
+  const sectionEl = document.getElementById('order-status-section');
+  const titleEl = document.getElementById('customer-portal-modal-title');
+  const subEl = document.getElementById('customer-portal-modal-subtitle');
+
+  if (loggedInCustomerPhone) {
+    const regAccount = registeredCustomers.find(c => normalizePhone(c.phone) === loggedInCustomerPhone);
+    const firstOrder = completedOrders.find(o => normalizePhone(o.phone) === loggedInCustomerPhone);
+    const displayName = (regAccount && regAccount.name) || (firstOrder && firstOrder.customerName) || loggedInCustomerPhone;
+    if (titleEl) {
+      titleEl.textContent = mode === 'track'
+        ? ('📦 Track Order Status — ' + displayName)
+        : ('👤 My Profile & Order Dashboard — ' + displayName);
+    }
+    if (subEl) {
+      subEl.textContent = 'Check your live order crafting & delivery status, download invoices, or manage order cancellation requests.';
+    }
+  } else {
+    if (mode === 'login' || mode === 'register') {
+      switchCustomerAuthTab(mode);
+    } else if (registeredCustomers && registeredCustomers.length > 0) {
+      switchCustomerAuthTab('login');
+    } else {
+      switchCustomerAuthTab('register');
+    }
+    if (titleEl) {
+      titleEl.textContent = mode === 'track'
+        ? '🔑 Login to Track Your Order Status'
+        : '🔑 Customer Registration & Login';
+    }
+    if (subEl) {
+      subEl.textContent = 'Register once with your Name, Mobile Number & Password (or login) to continue.';
+    }
+  }
+
+  if (sectionEl) {
+    sectionEl.classList.remove('hidden');
+    sectionEl.classList.add('flex');
+  }
+
+  if (!loggedInCustomerPhone) {
+    setTimeout(() => {
+      if (activeCustomerAuthTab === 'login') {
+        const loginPhone = document.getElementById('cust-login-phone');
+        if (loginPhone) loginPhone.focus();
+      } else {
+        const regName = document.getElementById('reg-cust-name');
+        if (regName) regName.focus();
+      }
+    }, 150);
+  }
+}
+
+function closeCustomerPortalModal() {
+  const sectionEl = document.getElementById('order-status-section');
+  if (sectionEl) {
+    sectionEl.classList.add('hidden');
+    sectionEl.classList.remove('flex');
+  }
+}
+
 function requireCustomerLoginForOrder() {
   if (loggedInCustomerPhone) {
     return true;
   }
   pendingOrderAfterLogin = true;
-  closeCheckoutModal();
+  closeCheckoutModal(true);
   const promptBanner = document.getElementById('order-login-required-prompt');
   if (promptBanner) {
     promptBanner.classList.remove('hidden');
   }
+  openCustomerPortalModal(registeredCustomers && registeredCustomers.length > 0 ? 'login' : 'register');
   const gateCard = document.getElementById('customer-login-gate');
   if (gateCard) {
     gateCard.classList.add('ring-4', 'ring-amber-400');
     setTimeout(() => gateCard.classList.remove('ring-4', 'ring-amber-400'), 2600);
   }
-  const sectionEl = document.getElementById('order-status-section');
-  if (sectionEl) {
-    sectionEl.scrollIntoView({ behavior: 'smooth' });
-  }
-  setTimeout(() => {
-    if (activeCustomerAuthTab === 'login') {
-      const loginPhone = document.getElementById('cust-login-phone');
-      if (loginPhone) loginPhone.focus();
-    } else {
-      const regName = document.getElementById('reg-cust-name');
-      if (regName) regName.focus();
-    }
-  }, 350);
-  showToast('Please Register & Login with your Mobile Number and Password first to place an order!');
+  showToast('Please Register or Login first — your Order Checkout will open automatically right after!');
   return false;
 }
 
@@ -2724,13 +2584,7 @@ function requireCustomerLoginForOrder() {
 // STEP 2: STRICTLY PROTECTED CUSTOMER LOGIN (MOBILE + PASSWORD)
 // =====================================================================
 function scrollToCustomerPortal(tabMode) {
-  if (tabMode) {
-    switchCustomerAuthTab(tabMode);
-  }
-  const el = document.getElementById('order-status-section');
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  }
+  openCustomerPortalModal(tabMode || 'profile');
 }
 
 function switchCustomerAuthTab(tabMode) {
@@ -2832,10 +2686,12 @@ function registerNewCustomer() {
 
   if (pendingOrderAfterLogin) {
     pendingOrderAfterLogin = false;
-    showToast('Welcome ' + activeAccount.name + '! Opening Order Checkout...');
+    closeCustomerPortalModal();
+    showToast('Welcome ' + activeAccount.name + '! Opening Order Checkout (Upload Photo & Address)...');
     openCartDrawer();
   } else {
-    showToast('Account (' + phoneNorm + ') is active & logged in!');
+    openCustomerPortalModal('profile');
+    showToast('Welcome ' + activeAccount.name + '! Your Profile & Order Dashboard is now open.');
   }
 }
 
@@ -2926,10 +2782,12 @@ function verifyCustomerLogin() {
 
   if (pendingOrderAfterLogin) {
     pendingOrderAfterLogin = false;
-    showToast('Welcome ' + custAccount.name + '! Opening your Order Checkout now...');
+    closeCustomerPortalModal();
+    showToast('Welcome ' + custAccount.name + '! Opening your Order Checkout (Upload Photo & Address)...');
     openCartDrawer();
   } else {
-    showToast('Welcome ' + custAccount.name + '! Your Customer Dashboard is now active.');
+    openCustomerPortalModal('profile');
+    showToast('Welcome ' + custAccount.name + '! Your Profile & Order Dashboard is now open.');
   }
 }
 
@@ -3060,8 +2918,9 @@ function updateCustomerNavHeader() {
   }
   const regAccount = registeredCustomers.find(c => normalizePhone(c.phone) === loggedInCustomerPhone);
   const firstOrder = completedOrders.find(o => normalizePhone(o.phone) === loggedInCustomerPhone);
-  const displayName = (regAccount && regAccount.name) || (firstOrder && firstOrder.customerName) || loggedInCustomerPhone;
-  if (navLabel) navLabel.textContent = '📊 ' + displayName.split(' ')[0] + ' Dashboard';
+  const rawName = (regAccount && regAccount.name) || (firstOrder && firstOrder.customerName) || 'My';
+  const shortName = isPlaceholderCustomerName(rawName) ? 'My' : rawName.trim().split(/\s+/)[0];
+  if (navLabel) navLabel.textContent = '👤 ' + shortName + ' Profile';
   if (regNavBtn) regNavBtn.classList.add('hidden');
 }
 
@@ -4600,13 +4459,13 @@ function goToProductSlide(index) {
   const thumb1 = document.getElementById('slide-thumb-1');
 
   if (currentProductSlide === 0) {
-    if (badge) badge.textContent = 'Sample Artwork 1 of 2 • Real Silver Frame';
-    if (caption) caption.textContent = 'Slide 1/2: Handmade Thread String Art in Brushed Metallic Silver Frame (Swipe or Click Arrows)';
+    if (badge) badge.textContent = 'Sample Artwork • Slide 1';
+    if (caption) caption.textContent = 'Sample Artwork • Slide 1';
     if (thumb0) thumb0.className = 'flex items-center gap-2 p-1.5 rounded-xl bg-slate-100 border-2 border-slate-900 text-left transition shadow-sm';
     if (thumb1) thumb1.className = 'flex items-center gap-2 p-1.5 rounded-xl bg-slate-200/80 border border-slate-400 hover:border-slate-700 text-left transition';
   } else {
-    if (badge) badge.textContent = 'Sample Artwork 2 of 2 • Circular Thread Portrait';
-    if (caption) caption.textContent = 'Slide 2/2: Handmade Circular Thread String Art Portrait Close-Up (Swipe or Click Arrows)';
+    if (badge) badge.textContent = 'Sample Artwork • Slide 2';
+    if (caption) caption.textContent = 'Sample Artwork • Slide 2';
     if (thumb1) thumb1.className = 'flex items-center gap-2 p-1.5 rounded-xl bg-slate-100 border-2 border-slate-900 text-left transition shadow-sm';
     if (thumb0) thumb0.className = 'flex items-center gap-2 p-1.5 rounded-xl bg-slate-200/80 border border-slate-400 hover:border-slate-700 text-left transition';
   }
@@ -5980,15 +5839,13 @@ I have completed payment for my Custom Handmade Thread String Art Portrait order
 
 function viewLiveStatusOnPage() {
   closeCheckoutModal(true);
-  renderLiveOrderTracker();
-  const el = document.getElementById('order-status-section');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-  showToast('✓ Viewing Full Order Status Page (Order Status: PAYMENT PAID)!');
+  openCustomerPortalModal('track');
+  showToast('✓ Viewing Full Order Status & Tracking Dashboard (Order Status: PAYMENT PAID)!');
 }
 
 function goToCustomerPortalFromModal(tabMode) {
   closeOrderHistoryModal();
-  scrollToCustomerPortal(tabMode || 'register');
+  openCustomerPortalModal(tabMode || 'register');
 }
 
 function printOrSaveInvoice() {
@@ -5996,12 +5853,7 @@ function printOrSaveInvoice() {
 }
 
 function openOrderHistoryModal() {
-  renderLiveOrderTracker();
-  const modal = document.getElementById('orders-history-modal');
-  if (modal) {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-  }
+  openCustomerPortalModal('track');
 }
 
 function closeOrderHistoryModal() {
